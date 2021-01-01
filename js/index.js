@@ -122,7 +122,7 @@ let cargarDatos = () => {
                 <div class="card-body">
                     <p class="h5" id="descripcion">Descripción: ${descripcion}</p>
                     <p class="h5">Monto: ${monto}</p>
-                    <button onclick="eliminarGastos('${descripcion}')" class="form-control btn-danger">Eliminar</button>
+                    <button onclick="eliminarGasto('${descripcion}')" class="form-control btn-danger">Eliminar</button>
                 </div>
             </div>
         `;
@@ -168,6 +168,13 @@ let eliminarGasto = (des) => {
         }
     }
     localStorage.setItem('gastosGuardados', JSON.stringify(gastos));
+    if (localStorage.getItem('gastosGuardados') !== null) {
+        presupuestoTxt.value = "";
+        presupuestoTxt.disabled = false;
+        presupuestoBtn.disabled = false;
+        presupuestoDiv.innerHTML = "";
+        presupuestoSuma.innerHTML = "";
+    }
     cargarDatos()
 }
 
